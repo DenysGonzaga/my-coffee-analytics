@@ -162,3 +162,5 @@ cython_debug/
 #.idea/
 
 *.duckdb
+# Ignore dynaconf secret files
+.secrets.*

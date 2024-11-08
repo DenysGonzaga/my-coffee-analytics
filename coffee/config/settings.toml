@@ -1,0 +1,5 @@
+[default]
+database_path = "."
+database_name = "db_coffee_analytics.xuxa"
+table_name = "tb_coffee_analytics"
+log_path = ""
