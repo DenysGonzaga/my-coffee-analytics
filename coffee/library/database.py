@@ -33,8 +33,9 @@ def init_database():
             db.execute(
                 f"""
                 CREATE TABLE IF NOT EXISTS {settings.default.table_name} (
-                    id INTEGER DEFAULT nextval('seq_personid'),
+                    brew_id INTEGER DEFAULT nextval('seq_personid'),
                     record_date TIMESTAMP,
+                    brew_type VARCHAR,
                     wter_quant SMALLINT,
                     coff_quant SMALLINT,
                     clic_quant SMALLINT,
