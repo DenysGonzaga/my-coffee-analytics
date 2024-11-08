@@ -7,17 +7,16 @@ from coffee.library.config import settings
 
 class DuckDbConnection(object):
 
-    def __enter__(self):
-        db_path = Path(
-            path.join(
-                settings.default.database_path, f"{settings.default.database_name}"
-            )
-        )
+    def __init__(self):
+        db_path = Path(path.join(settings.database_path, f"{settings.database_name}"))
 
         if db_path.suffix != ".duckdb":
-            db_path = db_path.with_suffix(".duckdb")
+            db_path = str(db_path.with_suffix(".duckdb"))
 
-        self.conn = duckdb.connect(str(db_path))
+        self.db_path = db_path
+
+    def __enter__(self):
+        self.conn = duckdb.connect(self.db_path)
         return self.conn
 
     def __exit__(self, exc_type, exc_value, exc_tb):
@@ -28,11 +27,11 @@ def init_database():
     with DuckDbConnection() as db:
         tables = [x[0] for x in db.execute("SHOW TABLES").fetchall()]
 
-        if settings.default.table_name not in tables:
+        if settings.table_name not in tables:
             db.execute("CREATE SEQUENCE seq_personid START 1 INCREMENT 1;")
             db.execute(
                 f"""
-                CREATE TABLE IF NOT EXISTS {settings.default.table_name} (
+                CREATE TABLE IF NOT EXISTS {settings.table_name} (
                     brew_id INTEGER DEFAULT nextval('seq_personid'),
                     record_date TIMESTAMP,
                     brew_type VARCHAR,
@@ -46,3 +45,6 @@ def init_database():
                 )
                 """
             )
+
+            return True
+    return False

@@ -1,5 +1,11 @@
-[default]
+[development]
 database_path = "."
-database_name = "db_coffee_analytics.xuxa"
+database_name = "db_coffee_analytics"
+table_name = "tb_coffee_analytics"
+log_path = ""
+
+[tests]
+database_path = "."
+database_name = "db_test_"
 table_name = "tb_coffee_analytics"
 log_path = ""

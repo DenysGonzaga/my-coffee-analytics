@@ -44,12 +44,15 @@ def main(show_menu=True):
             pass
         case 5:
             pass
-            #brew_id = make_question("Brew ID:", int)
-            #BrewOperations.add_brew_feedback(brew_id)
+            # brew_id = make_question("Brew ID:", int)
+            # BrewOperations.add_brew_feedback(brew_id)
 
     main(False)
 
 
 if __name__ == "__main__":
-    init_database()
-    main()
+    try:
+        init_database()
+        main()
+    except Exception as e:
+        print(f"Application can't continue due an error: {str(e)}")

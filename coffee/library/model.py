@@ -15,8 +15,9 @@ class WhereFactory(object):
     def __validate_clauses(self):
         for c in self.__clauses:
             if c.operator not in [">", "<", ">=", "<=", "="]:
-                print(f"Err: Clause operator not found: '{c.operator}'")
-                exit(-1)
+                raise NotImplementedError(
+                    f"Err: Clause operator not found: '{c.operator}'"
+                )
 
     def __set_where(self):
         self.where = " WHERE "
