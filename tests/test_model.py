@@ -1,8 +1,8 @@
-import pytest
 from datetime import datetime
 
-from coffee.library.model import *
-from coffee.library.config import settings
+import pytest
+
+from coffeeanalytics.library.model import WhereFactory, Clause
 
 
 def test_where_factory():
@@ -26,10 +26,6 @@ def test_where_factory_clause_not_implemented():
 
 
 def test_add_clause():
-    wh = WhereFactory(
-        [
-            Clause("field1", ">", 123)
-        ]
-    )
+    wh = WhereFactory([Clause("field1", ">", 123)])
     wh.add_clause(Clause("field2", "=", "test"))
     assert len(wh) == 2

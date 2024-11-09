@@ -1,4 +1,4 @@
-from coffee.library.config import settings
+from coffeeanalytics.library.config import settings
 
 settings.setenv("tests")
 

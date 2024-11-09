@@ -8,7 +8,7 @@ ValidationValue = namedtuple(
 Clause = namedtuple("Clause", ["field", "operator", "value"])
 
 
-class WhereFactory(object):
+class WhereFactory:
 
     def __init__(self, clauses: List[Clause]):
         self.__clauses = clauses
@@ -35,8 +35,17 @@ class WhereFactory(object):
     def __len__(self):
         return len(self.__clauses)
 
-
-    def add_clause(self, Clause):
-        self.__clauses.append(Clause)
+    def add_clause(self, clause: Clause):
+        self.__clauses.append(clause)
         self.__validate_clauses()
         self.__set_where()
+
+
+class MaxRetriesExceptions(Exception):
+    """Exception raised for max retries on input data capture."""
+
+    def __init__(self, message):
+        super().__init__(message)
+
+    def __str__(self):
+        return f"{self.message}"

@@ -1,10 +1,17 @@
 import os
-import pytest
 from pathlib import Path
-from coffee.library.config import settings
+from datetime import datetime
 
-from coffee.library.database import *
-from coffee.library.operations import *
+import pytest
+
+from coffeeanalytics.library.config import settings
+from coffeeanalytics.library.model import WhereFactory, Clause
+from coffeeanalytics.library.database import DuckDbConnection, init_database
+from coffeeanalytics.library.operations import (
+    validate_input,
+    make_question,
+    BrewOperations,
+)
 
 
 @pytest.fixture(scope="module")
@@ -90,9 +97,7 @@ def test_add_n_list_with_filter_brew(temp_db, monkeypatch):
         input_data = iter(["20", "20", "20", "20", "20"])
         monkeypatch.setattr("builtins.input", lambda _: next(input_data))
         BrewOperations.add_brew()
-        BrewOperations.list_brew(
-            WhereFactory([Clause("brew_id", "=", 1)])
-        )
+        BrewOperations.list_brew(WhereFactory([Clause("brew_id", "=", 1)]))
 
 
 def test_add_feedback_brew(temp_db, monkeypatch):
@@ -101,6 +106,4 @@ def test_add_feedback_brew(temp_db, monkeypatch):
         input_data = iter(["20", "20", "20", "20", "20", "5", "6", "4"])
         monkeypatch.setattr("builtins.input", lambda _: next(input_data))
         BrewOperations.add_brew()
-        BrewOperations.add_brew_feedback(
-                WhereFactory([Clause("brew_id", "=", 1)])
-        )
+        BrewOperations.add_brew_feedback(WhereFactory([Clause("brew_id", "=", 1)]))

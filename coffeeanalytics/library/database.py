@@ -1,13 +1,15 @@
-import duckdb
 from os import path
 from pathlib import Path
 
-from coffee.library.config import settings
+import duckdb
+
+from coffeeanalytics.library.config import settings
 
 
-class DuckDbConnection(object):
+class DuckDbConnection:
 
     def __init__(self):
+        self.conn = None
         db_path = Path(path.join(settings.database_path, f"{settings.database_name}"))
 
         if db_path.suffix != ".duckdb":

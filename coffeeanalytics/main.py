@@ -1,9 +1,10 @@
+import sys
 from datetime import datetime
 from tabulate import tabulate
 
-from coffee.library.database import init_database
-from coffee.library.model import Clause, WhereFactory
-from coffee.library.operations import make_question, BrewOperations
+from coffeeanalytics.library.database import init_database
+from coffeeanalytics.library.model import Clause, WhereFactory
+from coffeeanalytics.library.operations import make_question, BrewOperations
 
 
 def main(show_menu=True):
@@ -24,7 +25,7 @@ def main(show_menu=True):
     match cmd:
         case 0:
             print("Bye ! See you soon !")
-            exit(0)
+            sys.exit(0)
         case 1:
             BrewOperations.add_brew()
         case 2:
@@ -55,8 +56,5 @@ def main(show_menu=True):
 
 
 if __name__ == "__main__":
-    try:
-        init_database()
-        main()
-    except Exception as e:
-        print(f"Application can't continue due an error: {str(e)}")
+    init_database()
+    main()

@@ -1,8 +1,10 @@
 import os
+from pathlib import Path
+
 import pytest
 
-from coffee.library.config import settings
-from coffee.library.database import *
+from coffeeanalytics.library.config import settings
+from coffeeanalytics.library.database import DuckDbConnection, init_database
 
 settings.setenv("tests")
 
@@ -13,7 +15,7 @@ def temp_db():
 
     yield DuckDbConnection()
 
-    db_path = Path(path.join(settings.database_path, f"{settings.database_name}"))
+    db_path = Path(os.path.join(settings.database_path, f"{settings.database_name}"))
 
     if db_path.suffix != ".duckdb":
         db_path = str(db_path.with_suffix(".duckdb"))
@@ -29,5 +31,5 @@ def test_db_connection():
 
 
 def test_init_database():
-    assert init_database() == True
-    assert init_database() == False
+    assert init_database() is True
+    assert init_database() is False
