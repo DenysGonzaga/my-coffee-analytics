@@ -41,11 +41,15 @@ def main(show_menu=True):
                 )
             )
         case 4:
-            pass
+            brew_type = make_question("Brew Method:", str)
+            BrewOperations.list_brew(
+                WhereFactory([Clause("brew_type", "like", f"%{brew_type}%")])
+            )
         case 5:
-            pass
-            # brew_id = make_question("Brew ID:", int)
-            # BrewOperations.add_brew_feedback(brew_id)
+            brew_type = make_question("Input a brew id:", int)
+            BrewOperations.add_brew_feedback(
+                WhereFactory([Clause("brew_id", "=", brew_type)])
+            )
 
     main(False)
 

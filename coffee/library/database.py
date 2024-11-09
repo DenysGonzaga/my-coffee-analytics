@@ -39,9 +39,9 @@ def init_database():
                     coff_quant SMALLINT,
                     clic_quant SMALLINT,
                     wtem_quant SMALLINT,
-                    color_score SMALLINT,
-                    flavor_score SMALLINT,
-                    smells_score SMALLINT
+                    color_score SMALLINT DEFAULT 0,
+                    flavor_score SMALLINT DEFAULT 0,
+                    smells_score SMALLINT DEFAULT 0
                 )
                 """
             )
