@@ -21,4 +21,5 @@ jobs:
         pip install poetry
     - name: Analysing the code with pylint
       run: |
-        poetry run pylint $(git ls-files '*.py')
+        poetry install
+        poetry run pylint $(git ls-files 'coffeeanalytics/*.py')
