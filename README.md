@@ -1,5 +1,7 @@
 # My Coffee Analytics
 
+[![Pylint](https://github.com/DenysGonzaga/my-coffee-analytics/actions/workflows/pylint.yml/badge.svg)](https://github.com/DenysGonzaga/my-coffee-analytics/actions/workflows/pylint.yml)
+
 An application to store and analyze data regarding my coffee brews. \
 This app was born out of my personal need to analyze different variables of a coffee brew, such as the method used, water temperature, grinder clicks, and so on. \
 The main idea is, when I have necessary data collected, I'll able to generate data points (with graphs in future improvements) to improve my recipes.

@@ -1,3 +1,8 @@
+"""
+Module to provide operations in general, to handle database, to receive data 
+from command line etc.
+"""
+
 from datetime import datetime
 
 from tabulate import tabulate
@@ -12,7 +17,15 @@ from coffeeanalytics.library.model import (
 )
 
 
-def validate_input(value, validate_type):
+def validate_input(value: str, validate_type: type):
+    """
+    Validate type of a input.
+
+    Attributes
+    ----------
+    value (str): Value to be validated.
+    validate_type (type): Desired type.
+    """
     if validate_type == int:
         value = value.replace(" ", "")
 
@@ -29,7 +42,17 @@ def validate_input(value, validate_type):
     return ValidationValue(str(value), None)
 
 
-def make_question(message, validate_type, retry=1, max_retries=3):
+def make_question(message: str, validate_type: type, retry: int=1, max_retries:int=3):
+    """
+    Function that retrives input from user.
+
+    Attributes
+    ----------
+    message (str): Message question to be displayed.
+    validate_type (type): Desired type.
+    retry (int): Current retry value.
+    max_retries (int): Max retry.
+    """
     user_input = input(f"{message} ")
 
     if retry >= max_retries:
@@ -45,9 +68,15 @@ def make_question(message, validate_type, retry=1, max_retries=3):
 
 
 class BrewOperations:
+    """
+    A class to handle brew operations.
+    """
 
     @staticmethod
     def add_brew():
+        """
+        Add a new brew to database.
+        """
         btyp = make_question(
             " - You used which method in your brew (e.g., French Press, Chemex etc) ?",
             str,
@@ -78,6 +107,13 @@ class BrewOperations:
 
     @staticmethod
     def add_brew_feedback(w_fact: WhereFactory):
+        """
+        Function to add a new brew feedback to an existing brew.
+
+        Attributes
+        ----------
+        w_fact (WhereFactory): Where clause to find a brew to update.
+        """
         print(
             "You're free to use your scale (e.g., 0 to 10 or 1 to 5), but, "
             + "just to have a fair comparison, use the same scale for all records."
@@ -99,6 +135,13 @@ class BrewOperations:
 
     @staticmethod
     def list_brew(w_fact: WhereFactory = None):
+        """
+        Function to list brews.
+
+        Attributes
+        ----------
+        w_fact (WhereFactory): Where clause to find list of brews.
+        """
         sql = f"""SELECT brew_id,
                     CAST(record_date AS DATE) AS record_date, 
                     brew_type,

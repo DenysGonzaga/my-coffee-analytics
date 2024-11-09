@@ -1,3 +1,7 @@
+"""
+Module to handle database operations.
+"""
+
 from os import path
 from pathlib import Path
 
@@ -7,6 +11,9 @@ from coffeeanalytics.library.config import settings
 
 
 class DuckDbConnection:
+    """
+    A class to handle DuckDb connections.
+    """
 
     def __init__(self):
         self.conn = None
@@ -26,6 +33,9 @@ class DuckDbConnection:
 
 
 def init_database():
+    """
+    Function to initialize a database and table in order to store brew data.
+    """
     with DuckDbConnection() as db:
         tables = [x[0] for x in db.execute("SHOW TABLES").fetchall()]
 

@@ -1,3 +1,7 @@
+""" 
+Main module with entrypoint function.
+"""
+
 import sys
 from datetime import datetime
 from tabulate import tabulate
@@ -8,6 +12,13 @@ from coffeeanalytics.library.operations import make_question, BrewOperations
 
 
 def main(show_menu=True):
+    """
+    Main function, entrypoint for the application.
+
+    Attributes
+    ----------
+    show_menu (bool): If menu will be displayed again (default True)
+    """
     if show_menu:
         p_commands = [
             (1, "Add a new brew data."),

@@ -1,3 +1,5 @@
+""" Module to initialize Dynaconf Configuration."""
+
 from os import path
 from dynaconf import Dynaconf
 
