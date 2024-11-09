@@ -17,7 +17,7 @@ Sphinx for documentation. (TBD)
 
 It's meant to be a simple application, so I developed it with a focus on an intuitive console command interface.
 
-![screen](assets\images\screen1.png?raw=true)
+![screen](assets/images/screen1.png?raw=true)
 
 ## Running tests
 
