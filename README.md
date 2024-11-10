@@ -1,6 +1,9 @@
 # My Coffee Analytics
 
+[![python](https://img.shields.io/badge/Python-3.10-blue)](https://img.shields.io/badge/Python-3.10-blue)
+[![Poetry](https://img.shields.io/endpoint?url=https://python-poetry.org/badge/v0.json)](https://python-poetry.org/)
 [![Pylint](https://github.com/DenysGonzaga/my-coffee-analytics/actions/workflows/pylint.yml/badge.svg)](https://github.com/DenysGonzaga/my-coffee-analytics/actions/workflows/pylint.yml)
+[![codecov](https://codecov.io/gh/DenysGonzaga/my-coffee-analytics/graph/badge.svg?token=ZLCHKXPAHM)](https://codecov.io/gh/DenysGonzaga/my-coffee-analytics)
 
 An application to store and analyze data regarding my coffee brews. \
 This app was born out of my personal need to analyze different variables of a coffee brew, such as the method used, water temperature, grinder clicks, and so on. \
